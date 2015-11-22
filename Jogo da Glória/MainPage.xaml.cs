@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,6 +27,14 @@ namespace Jogo_da_Glória
         {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            var obj = App.Current as App;
+
+            for (int i = 1; i <= obj.maxplayers; i++)
+            {
+                list_players.Items.Add(i);
+            }
+
         }
 
         /// <summary>
@@ -46,20 +55,10 @@ namespace Jogo_da_Glória
 
         private void bt_go_Click(object sender, RoutedEventArgs e)
         {
-            if (list_players.SelectedValue != null) // If something is selected then allow to navigate
-                this.Frame.Navigate(typeof(Game));
+            this.Frame.Navigate(typeof(Game), int.Parse(list_players.SelectedValue.ToString()));          
         }
 
         private void list_players_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            for (int i = 1; i <= 12; i++)
-            {
-                list_players.Items.Add(i);
-            }
-
-            //Sending the player number to Game
-            var obj = App.Current as App;
-            obj.players = (int)list_players.SelectedValue;
-        }
+        { }
     }
 }

@@ -27,13 +27,7 @@ namespace Jogo_da_Glória
     {
         private TransitionCollection transitions;
 
-        public int players //How many players in this instace of game
-        {
-            get { return players; }
-            set { players = value; }
-        }
-
-        List<int> maxplayers;
+        public int maxplayers = 12;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -123,6 +117,7 @@ namespace Jogo_da_Glória
             rootFrame.ContentTransitions = this.transitions ?? new TransitionCollection() { new NavigationThemeTransition() };
             rootFrame.Navigated -= this.RootFrame_FirstNavigated;
         }
+
 
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved

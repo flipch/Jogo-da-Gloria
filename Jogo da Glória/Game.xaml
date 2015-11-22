@@ -14,8 +14,9 @@
             <ColumnDefinition Width="201*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="txt_title" Height="149" Margin="9,10,10,0" TextWrapping="Wrap" Text="Jogo da Glória" VerticalAlignment="Top" FontWeight="Bold" FontSize="64" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-        <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" Margin="10,207,10,194" TextWrapping="Wrap" Text="" FontSize="32" TextAlignment="Center" LineHeight="26.667" SelectionChanged="textBlock_SelectionChanged"/>
+        <TextBlock x:Name="txt_instructions" Grid.ColumnSpan="2" Margin="10,207,10,194" TextWrapping="Wrap" Text="" FontSize="32" TextAlignment="Center" LineHeight="26.667" SelectionChanged="textBlock_SelectionChanged"/>
         <Button x:Name="button" Grid.ColumnSpan="2" Content="Próxima Jogada" HorizontalAlignment="Stretch" Height="169" Margin="10,0,10,10" VerticalAlignment="Bottom" FontSize="48" Click="button_Click"/>
+        <TextBlock x:Name="txt_current_player" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="43" Margin="10,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="380" FontSize="32" FontWeight="Bold" TextAlignment="Center"/>
 
     </Grid>
 </Page>

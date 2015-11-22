@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace Jogo_da_Glória
@@ -22,8 +24,9 @@ namespace Jogo_da_Glória
     /// </summary>
     public sealed partial class Game : Page
     {
-        public int[] playcount;
-        public int player;
+        
+        public int players;
+        public Positions = new Positions();
         public Game()
         {
             this.InitializeComponent();
@@ -36,12 +39,21 @@ namespace Jogo_da_Glória
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            players = (int)e.Parameter;
+            Debug.WriteLine("There will be " + players + " players in this game");
 
+            txt_current_player.Text = "Jogador 1";
+            txt_instructions.Text = positions
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
