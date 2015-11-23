@@ -106,12 +106,13 @@ namespace Jogo_da_Glória
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             var r = new Random();
-            if (allPlayers.Count == 0)
+            if (allPlayers.Count == 0) // Game ended
             {
                 txt_current_player.Text = "";
                 txt_dice.Text = "";
                 txt_instructions.Text = "O jogo acabou! Parabéns seus bebados!!";
-                button.IsEnabled = false;
+                button.Visibility = Visibility.Collapsed;
+                bt_go.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -212,6 +213,11 @@ namespace Jogo_da_Glória
             bt_yes.Visibility = Visibility.Collapsed;
             bt_no.Visibility = Visibility.Collapsed;
             button.IsEnabled = true;
+        }
+
+        private void bt_go_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (MainPage));
         }
 
         private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
