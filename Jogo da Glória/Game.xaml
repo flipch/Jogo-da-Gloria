@@ -17,7 +17,7 @@
                    VerticalAlignment="Top" FontWeight="Bold" FontSize="64" TextAlignment="Center" Grid.ColumnSpan="2"
                    d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
         <TextBlock x:Name="txt_instructions" Grid.ColumnSpan="2" Margin="10,287,10,194" TextWrapping="Wrap"
-                   Text="Beba 3 ou volta 8 casas"
+                   Text=""
                    FontSize="32" TextAlignment="Center" LineHeight="26.667"
                    SelectionChanged="textBlock_SelectionChanged" />
         <Button x:Name="button" Grid.ColumnSpan="2" Content="Próxima Jogada" HorizontalAlignment="Stretch" Height="169"
@@ -36,6 +36,11 @@
                          Margin="10,0,10,17"
                          VerticalAlignment="Bottom" FontSize="48"
                          Click="bt_go_Click" Grid.ColumnSpan="2" Visibility="Collapsed" />
+        <Button x:Name="bt_joke" Content="Piada" HorizontalAlignment="Left" Height="75" Margin="10,387,0,0"
+                VerticalAlignment="Top" Width="179" Click="bt_joke_Click" Visibility="Collapsed" />
+        <Button x:Name="bt_drink" Content="Beber" Grid.Column="1" HorizontalAlignment="Left" Height="75"
+                Margin="9.833,387,0,0" VerticalAlignment="Top" Width="181" Click="bt_drink_Click"
+                Visibility="Collapsed" />
 
     </Grid>
 </Page>

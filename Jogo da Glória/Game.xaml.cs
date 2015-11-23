@@ -7,6 +7,9 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+// for Task class
+
+// for Thread class
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -64,23 +67,18 @@ namespace Jogo_da_Glória
             allPositions.Add("Todos os jogadores sem C,N ou H no nome bebem", 0);
             allPositions.Add("Beba 3 OU volta 8 casas.", 0);
             allPositions.Add("Jogue dado novamente, beba o número que ele mostrar", 0);
-            // TODO Implement roll dice again case
             allPositions.Add("Mande 3 jogadores beberem", 0);
             allPositions.Add("Os jogadores do seu lado bebem", 0);
             allPositions.Add("Todos os homem bebem", 0);
             allPositions.Add("Todos os jogadores usando preto bebem.", 0);
             allPositions.Add("A mulher que você apontar bebe 3", 0);
             allPositions.Add("Volte 7 casas", -7);
-            allPositions.Add("Todos jogaram o dado, quem tirou 6 VOLTA ao ÍNICIO", 0);
-            // TODO Implement Dice roll for everyone 
-            // and choose the ones who got a 6 
+            allPositions.Add("Todos jogaram o dado, quem tirou 6 VOLTOU ao ÍNICIO", 0);
             allPositions.Add("Pode ir a casa de banho", 0);
             allPositions.Add("Jogou uma moeda\n", 0);
-            // TODO Implement Heads or Tail and who drinks
-            allPositions.Add("Jogou o dado, beba e volte para trás o número do resultado.", 0);
-            // TODO Implement Dice rollup and go back Dice result
+            allPositions.Add("Beba! Já agora, voltou para trás ", 0);
             allPositions.Add("Conte uma piada ou beba 4", 0);
-            allPositions.Add("Beba e fica uma rodada sem jogar", 0); // TODO Implement Player doesnt play this round
+            allPositions.Add("Beba e fica uma rodada sem jogar", 0);
             allPositions.Add("Beba com o DONO do jogo!", 0);
             allPositions.Add("Beba e volte 7 casas!", -7);
             allPositions.Add("Faça um brinde com todos os jogadores e bebam", 0);
@@ -124,6 +122,12 @@ namespace Jogo_da_Glória
             var player = allPlayers.ElementAt(currentPlayer - 1);
             Debug.WriteLine(player);
 
+            if (!player.CanPlay)
+            {
+                player.CanPlay = true;
+                return;
+            }
+
             txt_current_player.Text = "Jogador " + player.Id;
 
             if (!player.FirstTime)
@@ -145,23 +149,51 @@ namespace Jogo_da_Glória
                     default:
                         break;
                     case 14:
-
                         bt_no.Visibility = Visibility.Visible;
                         bt_yes.Visibility = Visibility.Visible;
                         button.IsEnabled = false;
                         break;
                     case 15:
+                        do
+                        {
+                            seed = r.Next(7);
+                        } while (seed == 0);
+                        txt_instructions.Text = txt_instructions.Text + "\n O dado rodou um " + seed + ", beba!";
                         break;
                     case 22:
+                        foreach (var p in allPlayers)
+                        {
+                            do
+                            {
+                                seed = r.Next(7);
+                            } while (seed == 0);
+                            if (seed == 6)
+                                p.CurrentPos = 0;
+                        }
                         break;
                     case 24:
+                        seed = r.Next(2);
+                        if (seed == 0)
+                            txt_instructions.Text = txt_instructions.Text + "\nCARA: Só voce bebe";
+                        else
+                            txt_instructions.Text = txt_instructions.Text + "\nCOROA: Todos bebem";
                         break;
                     case 25:
+                        do
+                        {
+                            seed = r.Next(7);
+                        } while (seed == 0);
+                        player.CurrentPos = player.CurrentPos - seed;
+                        txt_instructions.Text = txt_instructions.Text + seed + " casas!";
                         break;
                     case 26:
+                        bt_joke.Visibility = Visibility.Visible;
+                        bt_drink.Visibility = Visibility.Visible;
+                        button.IsEnabled = false;
                         break;
                     case 27:
-                        break;
+                        player.CanPlay = false;
+                        return;
                 }
                 Debug.WriteLine(player);
                 player.CurrentPos = player.CurrentPos + allPositions.ElementAt(player.CurrentPos).Value;
@@ -182,11 +214,6 @@ namespace Jogo_da_Glória
             }
             else
                 Debug.WriteLine(player);
-
-            // TODO Griefing prevention
-            /* this.button.IsEnabled = false;
-             System.Threading.Tasks.Task.Delay(4000).Wait();
-             this.button.IsEnabled = true;*/
         }
 
         private async void AwaitForButtonClicks()
@@ -218,6 +245,23 @@ namespace Jogo_da_Glória
         private void bt_go_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof (MainPage));
+        }
+
+        private void bt_drink_Click(object sender, RoutedEventArgs e)
+        {
+            var player = allPlayers.ElementAt(currentPlayer - 1);
+            player.DrinksCounter = player.DrinksCounter + 4;
+            Debug.WriteLine("YOU CHOSE TO DRINK");
+            bt_drink.Visibility = Visibility.Collapsed;
+            bt_joke.Visibility = Visibility.Collapsed;
+            button.IsEnabled = true;
+        }
+
+        private void bt_joke_Click(object sender, RoutedEventArgs e)
+        {
+            bt_drink.Visibility = Visibility.Collapsed;
+            bt_joke.Visibility = Visibility.Collapsed;
+            button.IsEnabled = true;
         }
 
         private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)

@@ -8,11 +8,14 @@
             CurrentPos = playerCurrentPos;
             DrinksCounter = 0;
             FirstTime = true;
+            CanPlay = true;
         }
 
         internal bool FirstTime { get; set; }
 
         public int Id { get; set; }
+
+        public bool CanPlay { get; set; }
 
         public int CurrentPos
         {
