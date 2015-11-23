@@ -19,13 +19,13 @@
             get { return CurrentPos1; }
             set
             {
-                if (value + CurrentPos > 30)
+                if (value > 30)
                 {
-                    CurrentPos1 = 30 - (value + CurrentPos1 - 30);
+                    CurrentPos1 = 30 - (value - 30);
                 }
-                else if (value + CurrentPos <= 0)
+                else if (value <= 0)
                 {
-                    CurrentPos1 = (value + CurrentPos)*-1 + 0;
+                    CurrentPos1 = value*-1 + 0;
                 }
                 else
                     CurrentPos1 = value;
