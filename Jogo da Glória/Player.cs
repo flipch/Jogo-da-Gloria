@@ -1,26 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Jogo_da_Glória
+﻿namespace Jogo_da_Glória
 {
-    class Player
+    internal class Player
     {
-        internal bool firstTime { get; set; }
-
-        public int ID { get; set; }
-        public int currentPos { get; set; }
-
-        public int drinksCounter { get; set; }
-
-        public Player(int playerID, int playerCurrentPos)
+        public Player(int playerId, int playerCurrentPos)
         {
-            ID = playerID;
-            currentPos = playerCurrentPos;
-            drinksCounter = 0;
-            firstTime = true;
+            Id = playerId;
+            CurrentPos = playerCurrentPos;
+            DrinksCounter = 0;
+            FirstTime = true;
+        }
+
+        internal bool FirstTime { get; set; }
+
+        public int Id { get; set; }
+
+        public int CurrentPos
+        {
+            get { return CurrentPos1; }
+            set
+            {
+                if (value + CurrentPos > 30)
+                {
+                    CurrentPos1 = 30 - (value + CurrentPos1 - 30);
+                }
+                else if (value + CurrentPos <= 0)
+                {
+                    CurrentPos1 = (value + CurrentPos)*-1 + 0;
+                }
+                else
+                    CurrentPos1 = value;
+            }
+        }
+
+        public int DrinksCounter { get; set; }
+
+        public int CurrentPos1 { get; set; }
+
+        public override string ToString()
+        {
+            return $"Player : {Id} is at {CurrentPos}, and drank {DrinksCounter} time/s";
         }
     }
 }

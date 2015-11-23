@@ -10,13 +10,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="txt_title" Height="149" Margin="9,40,10,0" TextWrapping="Wrap" Text="Jogo da Glória" VerticalAlignment="Top" FontWeight="Bold" FontSize="64" TextAlignment="Center"/>
-        <TextBlock x:Name="txt_instructions" Height="101" Margin="10,194,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" TextAlignment="Center">
-			<Run Text="Indique quantos jogadores :"/>	
+        <TextBlock x:Name="txt_title" Height="149" Margin="9,40,10,0" TextWrapping="Wrap" Text="Jogo da Glória"
+                   VerticalAlignment="Top" FontWeight="Bold" FontSize="64" TextAlignment="Center" />
+        <TextBlock x:Name="txt_instructions" Height="101" Margin="10,194,10,0" TextWrapping="Wrap"
+                   VerticalAlignment="Top" FontSize="32" TextAlignment="Center">
+            <Run Text="Indique quantos jogadores :" />
         </TextBlock>
-        <ComboBox x:Name="list_players" Margin="10,300,10,244" PlaceholderText="" IsSynchronizedWithCurrentItem="False" SelectionChanged="list_players_SelectionChanged">
-        </ComboBox>
-        <HyperlinkButton x:Name="bt_go" Content="Jogar" HorizontalAlignment="Stretch" Height="228" Margin="10,0,10,17" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" FontSize="48" Click="bt_go_Click"/>
+        <ComboBox x:Name="list_players" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                  Margin="10,320,10,263" PlaceholderText="" IsSynchronizedWithCurrentItem="False"
+                  SelectionChanged="list_players_SelectionChanged" FontSize="24" HorizontalAlignment="Center"
+                  VerticalAlignment="Center" Width="380" />
+        <HyperlinkButton x:Name="bt_go" Content="Jogar" HorizontalAlignment="Stretch" Height="228" Margin="10,0,10,17"
+                         VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" FontSize="48"
+                         Click="bt_go_Click" />
 
     </Grid>
 </Page>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
@@ -19,29 +7,33 @@ using Windows.UI.Xaml.Navigation;
 namespace Jogo_da_Glória
 {
     /// <summary>
-    /// First page where you select how many players are playing.
+    ///     First page where you select how many players are playing.
     /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
-            this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
 
-            var obj = App.Current as App;
+            var obj = Application.Current as App;
 
-            for (int i = 1; i <= obj.maxplayers; i++)
+            for (var i = 1; i <= obj.maxplayers; i++)
             {
                 list_players.Items.Add(i);
             }
-
+            list_players.SelectedItem = list_players.SelectedIndex = 1;
+            list_players.HorizontalContentAlignment = HorizontalAlignment.Center;
+            list_players.VerticalContentAlignment = VerticalAlignment.Center;
         }
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        ///     Invoked when this page is about to be displayed in a Frame.
         /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// <param name="e">
+        ///     Event data that describes how this page was reached.
+        ///     This parameter is typically used to configure the page.
+        /// </param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
@@ -55,10 +47,11 @@ namespace Jogo_da_Glória
 
         private void bt_go_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Game), int.Parse(list_players.SelectedValue.ToString()));          
+            Frame.Navigate(typeof (Game), int.Parse(list_players.SelectedValue.ToString()));
         }
 
         private void list_players_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { }
+        {
+        }
     }
 }
