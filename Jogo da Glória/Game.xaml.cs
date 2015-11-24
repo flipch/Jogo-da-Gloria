@@ -7,6 +7,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
 // for Task class
 
 // for Thread class
@@ -128,7 +129,6 @@ namespace Jogo_da_Glória
                 return;
             }
 
-            txt_current_player.Text = "Jogador " + player.Id;
 
             if (!player.FirstTime)
             {
@@ -143,6 +143,7 @@ namespace Jogo_da_Glória
                 //Cant be 0 and must be less than 7
                 player.CurrentPos = player.CurrentPos + seed;
                 Debug.WriteLine(player);
+                txt_current_player.Text = "Jogador " + player.Id + " Casa " + player.CurrentPos;
                 txt_instructions.Text = allPositions.ElementAt(player.CurrentPos).Key;
                 switch (player.CurrentPos)
                 {
@@ -158,7 +159,7 @@ namespace Jogo_da_Glória
                         {
                             seed = r.Next(7);
                         } while (seed == 0);
-                        txt_instructions.Text = txt_instructions.Text + "\n O dado rodou um " + seed + ", beba!";
+                        txt_instructions.Text = txt_instructions.Text + "\n O dado rodou um " + seed;
                         break;
                     case 22:
                         foreach (var p in allPlayers)
@@ -197,6 +198,7 @@ namespace Jogo_da_Glória
                 }
                 Debug.WriteLine(player);
                 player.CurrentPos = player.CurrentPos + allPositions.ElementAt(player.CurrentPos).Value;
+                txt_current_player.Text = "Jogador " + player.Id + " Casa " + player.CurrentPos;
             }
             else
             {

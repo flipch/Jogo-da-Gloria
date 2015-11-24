@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="57866Heliszkowski.JogodaGlria" Publisher="CN=EEFBD743-3FF5-48C8-952D-B5F04052D5C5" Version="1.1.0.7" />
+  <Identity Name="57866Heliszkowski.JogodaGlria" Publisher="CN=EEFBD743-3FF5-48C8-952D-B5F04052D5C5" Version="1.1.0.9" />
   <mp:PhoneIdentity PhoneProductId="8c561ae9-a91f-460f-b83a-9058eade7c06" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Jogo da Glória</DisplayName>
